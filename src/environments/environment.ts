@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  path:'https://ada-backend.herokuapp.com/api'
+  path:'https://ada-backend.herokuapp.com/'
 };
 
 /*
