@@ -37,7 +37,15 @@ export class InProgressComponent implements OnInit {
         this.apiService.getRelatedVehicles(element).subscribe(v => {
           this.vehicles = v;
           this.apiService.getRelatedUsers(element).subscribe(u => {
-            this.ELEMENT_DATA.push({vehicle: v.brand , type: v.type, owner: v.owner_name ,rewiev_done_by: u.first_name });
+            let prevod: string;
+            if(v.type=="PUTNICKO") {
+              prevod="PASSENGER VEHICLE";
+            } else if(v.type=="TERETNO") {
+              prevod="TRUCK";
+            } else if(v.type=="PRIKLJUCNO") {
+              prevod="TRAILER VEHICLE";
+            }
+            this.ELEMENT_DATA.push({vehicle: v.brand , type: prevod, owner: v.owner_name ,rewiev_done_by: u.first_name });
             this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
           });
         });    

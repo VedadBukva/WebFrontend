@@ -15,7 +15,7 @@ export class NewVehicleComponent implements OnInit {
 
   /*type = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);*/
-  animals: string[] = ['PUTNICKO', 'TERETNO','PRIKLJUCNO'];
+  animals: string[] = ['PASSENGER VEHICLE', 'TRUCK','TRAILER VEHICLE'];
 
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
@@ -60,7 +60,15 @@ export class NewVehicleComponent implements OnInit {
   }
 
   onSubmit(post) {
-    var v = { owner_name: post.owner,brand: post.Vname ,type: post.type,
+    let voz: string;
+    if(post.type=="TRUCK") {
+      voz = "TERETNO";
+    } else if(post.type=="PASSENGER VEHICLE") {
+      voz = "PUTNICKO";
+    } else if(post.type=="TRAILER VEHICLE") {
+      voz = "PRIKLJUCNO"
+    }
+    var v = { owner_name: post.owner,brand: post.Vname ,type: voz,
     serial_number: post.number,production_year: "1999",date_of_use: post.date1,previous_inspection: post.date2}
     this.apiService.postVehicle(v).subscribe(arg => {
       console.log(arg)

@@ -72,7 +72,15 @@ export class VehiclesComponent implements OnInit {
           }
           this.reviews = r;
           if (!userExists(elementV.id)) {
-            this.ELEMENT_DATA.push({ id : elementV.id,vehicle: elementV.brand , type: elementV.type, owner: elementV.owner_name });
+            let prevod: string;
+            if(elementV.type=="PUTNICKO") {
+              prevod="PASSENGER VEHICLE";
+            } else if(elementV.type=="TERETNO") {
+              prevod="TRUCK";
+            } else if(elementV.type=="PRIKLJUCNO") {
+              prevod="TRAILER VEHICLE";
+            }
+            this.ELEMENT_DATA.push({ id : elementV.id,vehicle: elementV.brand , type: prevod, owner: elementV.owner_name });
             this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
           }
         })
