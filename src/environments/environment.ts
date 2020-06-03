@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  path:'http://localhost:8080/api'
+  path:'https://ada-backend.herokuapp.com/api'
 };
 
 /*

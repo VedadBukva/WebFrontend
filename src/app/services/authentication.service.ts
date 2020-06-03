@@ -35,7 +35,8 @@ export interface TokenPayload {
 @Injectable()
 export class AuthenticationService {
   private token: string
-
+  url: string = environment.path;
+  
   constructor(private http: HttpClient, private router: Router) {}
 
   private saveToken(token: string): void {
@@ -70,7 +71,6 @@ export class AuthenticationService {
       return false
     }
   }
-  url: string = environment.path;
 
   public register(user: TokenPayload): Observable<any> {
     return this.http.post(this.url + `/api/register`, user)
