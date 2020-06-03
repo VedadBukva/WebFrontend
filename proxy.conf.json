@@ -1,6 +1,0 @@
-{
-  "/api": {
-    "target": "https://ada-backend.herokuapp.com",
-    "secure": false
-  }
-}
