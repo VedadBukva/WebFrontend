@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Vehicles } from '../classes/vehicles';
 import { Reviews } from '../classes/reviews';
 import { Users } from '../classes/users';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Users } from '../classes/users';
 
 export class ApiService {
 
-  url : string = 'http://localhost:8080/api';
+  url : string = environment.path;
 
   constructor(private http : HttpClient) { }
 

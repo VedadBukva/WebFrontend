@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { environment } from '../../environments/environment';
+
 
 export interface UserDetails {
   id: number
@@ -68,7 +70,7 @@ export class AuthenticationService {
       return false
     }
   }
-  url: string = 'http://localhost:8080';
+  url: string = environment.path;
 
   public register(user: TokenPayload): Observable<any> {
     return this.http.post(this.url + `/api/register`, user)
